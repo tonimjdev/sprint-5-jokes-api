@@ -12,16 +12,21 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 function getJoke() {
     const carregarAcudit = () => __awaiter(this, void 0, void 0, function* () {
         try {
+            // Fem fetch per obtenir un acudit
             let acudits = yield fetch('https://icanhazdadjoke.com/', {
                 headers: {
+                    // Per obtenir les dades en format json
                     Accept: "application/json",
                 },
             });
             let datos = yield acudits.json();
+            // Check resposta
+            console.log(datos);
+            // Extraiem acudit
             let acudit = datos.joke;
+            // Mostrem per pantalla
             let acuditHTML = document.getElementById('acudit');
             acuditHTML.innerHTML = `<cite>"${acudit}"</cite>`;
-            console.log(acudits);
         }
         catch (error) {
             console.log(error);

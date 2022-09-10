@@ -4,29 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/styles.css" />
     <title>ANGULAR - Sprint 5 - Jokes with API - Alumne: Toni Machado</title>
   </head>
   <body>
-<header>
-  <div class="meteo">Asoleiat | 32ºC</div>
-</header>
-    
+    <header>
+      <div class="weatherBox">
+        <img id="icone" src="" alt="icone temps" />
+        <div id="meteo"></div>
+      </div>
+    </header>
 
-  <main>
-    <div class="center">
-      <h1>Preparat per riure? 🤣</h1>
-      <p id="acudit"></p>
-      <p class="scoreSmaily">
-        <button id="negativeButton" class="smaily" onclick="scoreButton(1)">😓</button>
-        <button id="neutralButton" class="smaily" onclick="scoreButton(2)">😐</button>
-        <button id="positiveButton" class="smaily" onclick="scoreButton(3)">😆</button>
-      </p>
+    <main>
+      <div class="center">
+        <h1>Preparat per riure? 🤣</h1>
+        <p id="acudit"></p>
+        <p class="scoreSmaily">
+          <button id="negativeButton" class="smaily" onclick="scoreButton(1)">😓</button>
+          <button id="neutralButton" class="smaily" onclick="scoreButton(2)">😐</button>
+          <button id="positiveButton" class="smaily" onclick="scoreButton(3)">😆</button>
+        </p>
         <p>
-        <button id="next" onclick="getJoke()">Següent Acudit</button>
-      </p>
-    </div>
-    <script src="./main.js"></script>
-  </main>
+          <button id="next" onclick="getJoke()">Següent Acudit</button>
+        </p>
+      </div>
+      <script src="./main.js"></script>
+    </main>
   </body>
 </html>

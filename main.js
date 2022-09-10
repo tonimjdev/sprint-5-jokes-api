@@ -27,35 +27,57 @@ const showElement = (idElement) => {
     let elementToShow = document.getElementById(idElement);
     elementToShow.style.display = "inline";
 };
+// Funció per obtenir les dades del temps de la API triada
+const getWeather = () => __awaiter(void 0, void 0, void 0, function* () {
+    let meteoTemp, meteoIcone;
+    try {
+        const apiKey = "30be32c1cccd41eb93460a6f3a889fbb"; // Shhht🤫
+        const apiLang = "es";
+        const apiLatLon = "lat=41.396604&lon=2.159511"; // Localització: Gràcia (Barcelona)
+        let temps = yield fetch(`https://api.weatherbit.io/v2.0/current?key=${apiKey}&${apiLatLon}&lang=${apiLang}`);
+        let dades = yield temps.json();
+        // Check dades API
+        console.log("Dades meteo", dades);
+        meteoTemp = dades.data[0].app_temp;
+        meteoIcone = dades.data[0].weather.icon;
+        console.log("Temperatura: ", meteoTemp, "ºC");
+        console.log("Code: ", meteoIcone);
+    }
+    catch (error) {
+        console.log(error);
+    }
+    let iconeTemp = document.getElementById("icone");
+    iconeTemp.src = `https://www.weatherbit.io/static/img/icons/${meteoIcone}.png`;
+    let temperatura = document.getElementById("meteo");
+    temperatura.innerHTML = `${meteoTemp} ºC`;
+});
+getWeather();
 // Funció per rebre l'acudit (GET JOKE) amb funció asincrona i fetch
-function getJoke() {
-    const carregarAcudit = () => __awaiter(this, void 0, void 0, function* () {
-        try {
-            // Fem fetch per obtenir un acudit
-            let acudits = yield fetch('https://icanhazdadjoke.com/', {
-                headers: {
-                    // Per obtenir les dades en format json
-                    Accept: "application/json",
-                },
-            });
-            let datos = yield acudits.json();
-            // Check resposta
-            console.log(datos);
-            // Extraiem acudit
-            acudit = datos.joke;
-            // Mostrem per pantalla
-            let acuditHTML = document.getElementById('acudit');
-            acuditHTML.innerHTML = `<cite>"${acudit}"</cite>`;
-            showElement('negativeButton');
-            showElement('neutralButton');
-            showElement('positiveButton');
-        }
-        catch (error) {
-            console.log(error);
-        }
-    });
-    carregarAcudit();
-}
+const getJoke = () => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        // Fem fetch per obtenir un acudit
+        let acudits = yield fetch("https://icanhazdadjoke.com/", {
+            headers: {
+                // Per obtenir les dades en format json
+                Accept: "application/json",
+            },
+        });
+        let datos = yield acudits.json();
+        // Check resposta
+        console.log(datos);
+        // Extraiem acudit
+        acudit = datos.joke;
+        // Mostrem per pantalla
+        let acuditHTML = document.getElementById("acudit");
+        acuditHTML.innerHTML = `<cite>"${acudit}"</cite>`;
+        showElement("negativeButton");
+        showElement("neutralButton");
+        showElement("positiveButton");
+    }
+    catch (error) {
+        console.log(error);
+    }
+});
 // Funcio per anar guardant puntuacions dels acudits en un array
 function scoreButton(score) {
     let report = {
@@ -65,7 +87,7 @@ function scoreButton(score) {
     };
     reportAcudits.push(report);
     console.log(reportAcudits);
-    hideElement('negativeButton');
-    hideElement('neutralButton');
-    hideElement('positiveButton');
+    hideElement("negativeButton");
+    hideElement("neutralButton");
+    hideElement("positiveButton");
 }

@@ -73,6 +73,31 @@ const getJoke = async () => {
   }
 };
 
+// Funció per rebre l'acudit de la API Chuck Norris ^^
+const getChuck = async () => {
+  try {
+    let acuditsChuck = await fetch("https://api.chucknorris.io/jokes/random");
+    let datos = await acuditsChuck.json();
+    // Check resposta
+    console.log(datos);
+    // Extraiem acudit
+    acudit = datos.value;
+    // Mostrem per pantalla
+    let acuditHTML = document.getElementById("acudit") as HTMLElement;
+    acuditHTML.innerHTML = `<cite>"${acudit}"</cite>`;
+    showElement("negativeButton");
+    showElement("neutralButton");
+    showElement("positiveButton");
+  } catch (error) {
+    console.log(error);
+  }
+};
+// Funció per triar acudit aleatoriament
+function getAcudit() {
+  let randomAcudit = Math.floor(Math.random() * 6);
+  randomAcudit >= 3 ? getJoke() : getChuck();
+}
+
 // Funcio per anar guardant puntuacions dels acudits en un array
 function scoreButton(score: number) {
   let report = {

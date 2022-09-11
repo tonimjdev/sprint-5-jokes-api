@@ -1,9 +1,12 @@
 /* Styles per l'sprint 5 de l'itinerari ANGULAR de l'alumne Toni Machado*/
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+body {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9em;
 }
 header {
   padding: 2em 3em;
@@ -16,12 +19,33 @@ main {
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
+  background-image: url(../svg/blob1.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+#blobUp {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  background-image: url(../svg/blob2.svg);
+  top: 8%;
+  right: 8%;
+}
+#blobDown {
+  width: 150px;
+  height: 150px;
+  position: absolute;
+  background-image: url(../svg/blob3.svg);
+  bottom: 8%;
+  left: 8%;
 }
 .weatherBox {
   display: flex;
   flex-direction: row;
   gap: 0.7em;
   font-size: 1.1em;
+  font-weight: 400;
   align-items: center;
 }
 #icone {
@@ -31,41 +55,86 @@ main {
 }
 .center {
   max-width: 800px;
-  background-color: rgb(252, 187, 255);
   display: flex;
   flex-direction: column;
   align-items: center;
-  align-content: center;
-  padding: 2.5em 3.5em;
-  margin: 1em 2em;
   gap: 2em;
   border-radius: 20px;
-  box-shadow: 4px 6px 18px 2px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  z-index: 1;
 }
-.smaily {
-  border: none;
-  font-size: 2.4em;
-  background-color: rgb(252, 187, 255);
-}
-.scoreSmaily {
+.scoreSmiley {
   display: flex;
   flex-direction: row;
   gap: 1.6em;
 }
 #next {
-  padding: 1em 2em;
-  background-color: rgb(188, 90, 250);
+  width: 200px;
+  height: 50px;
+  background-color: #ecc85b;
+  padding: 0.25rem;
+  border: solid 2px #000;
+  border-radius: 50px;
+  font-weight: 700;
+  color: #000;
+  box-shadow: 4px 6px #ecc85b;
+}
+#next:active {
+  transform: translateX(4px) translateY(6px);
+
+  box-shadow: none;
+}
+.scoreSmiley button {
+  background-color: transparent;
   border: none;
-  border-radius: 20px;
-  color: #fff;
+}
+i {
+  background-color: #ecc85b;
+  width: 40px;
+  height: 40px;
+  border-radius: 4rem;
+  padding: 0.25rem;
+}
+.fa-3x:hover {
+  padding: 0;
 }
 button:hover {
   cursor: pointer;
 }
 h1 {
   font-size: 1.5em;
-  color: rgb(61, 61, 61);
+  color: #fff;
 }
 #acudit {
   font-size: 1.2em;
+  color: #fff;
+  max-width: 400px;
+}
+/* Responsive */
+@media (max-width: 800px) {
+  #blobUp {
+    width: 120px;
+    height: 120px;
+  }
+  #blobDown {
+    width: 120px;
+    height: 120px;
+  }
+}
+@media (max-width: 600px) {
+  #blobUp,
+  #blobDown {
+    display: none;
+  }
+  h1 {
+    font-size: 1.2em;
+  }
+  #acudit {
+    font-size: 1em;
+    max-width: 300px;
+  }
+  #next {
+    width: 160px;
+    height: 40px;
+  }
 }

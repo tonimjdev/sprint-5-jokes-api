@@ -5,6 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://kit.fontawesome.com/0b6d6d007a.js" crossorigin="anonymous"></script>
     <title>ANGULAR - Sprint 5 - Jokes with API - Alumne: Toni Machado</title>
   </head>
   <body>
@@ -14,20 +21,21 @@
         <div id="meteo"></div>
       </div>
     </header>
-
-    <main>
+    <main id="main">
+      <div id="blobUp"></div>
       <div class="center">
         <h1>Preparat per riure? 🤣</h1>
         <p id="acudit"></p>
-        <p class="scoreSmaily">
-          <button id="negativeButton" class="smaily" onclick="scoreButton(1)">😓</button>
-          <button id="neutralButton" class="smaily" onclick="scoreButton(2)">😐</button>
-          <button id="positiveButton" class="smaily" onclick="scoreButton(3)">😆</button>
+        <p id="faces" class="scoreSmiley" style="display: none">
+          <button id="negativeButton" onclick="scoreButton(1)"><i class="fa-3x fa-regular fa-face-sad-tear"></i></button>
+          <button id="neutralButton" onclick="scoreButton(2)"><i class="fa-3x fa-regular fa-face-meh"></i></button>
+          <button id="positiveButton" onclick="scoreButton(3)"><i class="fa-3x fa-regular fa-face-laugh-squint"></i></button>
         </p>
         <p>
-          <button id="next" onclick="getAcudit()">Següent Acudit</button>
+          <button id="next" onclick="getAcudit()">Començar</button>
         </p>
       </div>
+      <div id="blobDown"></div>
       <script src="./main.js"></script>
     </main>
   </body>

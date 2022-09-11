@@ -25,7 +25,7 @@ const hideElement = (idElement) => {
 // Funció per mostrar element del DOM
 const showElement = (idElement) => {
     let elementToShow = document.getElementById(idElement);
-    elementToShow.style.display = "inline";
+    elementToShow.style.display = "flex";
 };
 // Funció per obtenir les dades del temps de la API triada
 const getWeather = () => __awaiter(void 0, void 0, void 0, function* () {
@@ -40,18 +40,38 @@ const getWeather = () => __awaiter(void 0, void 0, void 0, function* () {
         console.log("Dades meteo", dades);
         meteoTemp = dades.data[0].app_temp;
         meteoIcone = dades.data[0].weather.icon;
+        // Check
         console.log("Temperatura: ", meteoTemp, "ºC");
         console.log("Code: ", meteoIcone);
     }
     catch (error) {
         console.log(error);
     }
+    // Mostrem l'icone del temps pel DOM mitjançant el codi que ens retorna l'API
     let iconeTemp = document.getElementById("icone");
     iconeTemp.src = `https://www.weatherbit.io/static/img/icons/${meteoIcone}.png`;
+    // Mostrem la temperatura tornada
     let temperatura = document.getElementById("meteo");
     temperatura.innerHTML = `${meteoTemp} ºC`;
 });
+// Cridem a funció per obtenir temps actual
 getWeather();
+// Funció per triar aleatoriament les formes dels blobs
+const getBlobs = () => {
+    // Calculem numeros aleatoriament entre 1 i 6
+    let random1 = Math.floor(Math.random() * (6 - 1) + 1);
+    let random2 = Math.floor(Math.random() * (6 - 1) + 1);
+    let random3 = Math.floor(Math.random() * (6 - 1) + 1);
+    // Enviem al DOM l'arxiu triat segons random
+    let blobGran = document.getElementById("main");
+    let blobUp = document.getElementById("blobUp");
+    let blobDown = document.getElementById("blobDown");
+    blobGran.style.backgroundImage = `url(../svg/blob${random1}.svg)`;
+    blobUp.style.backgroundImage = `url(../svg/blob${random2}.svg)`;
+    blobDown.style.backgroundImage = `url(../svg/blob${random3}.svg)`;
+};
+// Cridem funció per obtenir formes aleatories dels blobs
+getBlobs();
 // Funció per rebre l'acudit (GET JOKE) amb funció asincrona i fetch
 const getJoke = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
@@ -70,9 +90,7 @@ const getJoke = () => __awaiter(void 0, void 0, void 0, function* () {
         // Mostrem per pantalla
         let acuditHTML = document.getElementById("acudit");
         acuditHTML.innerHTML = `<cite>"${acudit}"</cite>`;
-        showElement("negativeButton");
-        showElement("neutralButton");
-        showElement("positiveButton");
+        showElement("faces");
     }
     catch (error) {
         console.log(error);
@@ -90,29 +108,31 @@ const getChuck = () => __awaiter(void 0, void 0, void 0, function* () {
         // Mostrem per pantalla
         let acuditHTML = document.getElementById("acudit");
         acuditHTML.innerHTML = `<cite>"${acudit}"</cite>`;
-        showElement("negativeButton");
-        showElement("neutralButton");
-        showElement("positiveButton");
+        showElement("faces");
     }
     catch (error) {
         console.log(error);
     }
 });
 // Funció per triar acudit aleatoriament
-function getAcudit() {
-    let randomAcudit = Math.floor(Math.random() * 6);
-    randomAcudit >= 3 ? getJoke() : getChuck();
-}
-// Funcio per anar guardant puntuacions dels acudits en un array
-function scoreButton(score) {
+const getAcudit = () => {
+    let randomAcudit = Math.floor(Math.random() * 10);
+    randomAcudit >= 5 ? getJoke() : getChuck();
+    getBlobs();
+    showElement("faces");
+    let nextHTML = document.getElementById("next");
+    nextHTML.innerHTML = "Següent Acudit";
+};
+// Funció per anar guardant puntuacions dels acudits en un array
+const scoreButton = (score) => {
     let report = {
         joke: acudit,
         score: score,
         date: dateToday,
     };
     reportAcudits.push(report);
+    // Mostrem l'array dels Reports per consola
     console.log(reportAcudits);
-    hideElement("negativeButton");
-    hideElement("neutralButton");
-    hideElement("positiveButton");
-}
+    // Un cop s'ha votat amaguem els smiley
+    hideElement("faces");
+};

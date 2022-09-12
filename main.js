@@ -66,9 +66,9 @@ const getBlobs = () => {
     let blobGran = document.getElementById("main");
     let blobUp = document.getElementById("blobUp");
     let blobDown = document.getElementById("blobDown");
-    blobGran.style.backgroundImage = `url(../svg/blob${random1}.svg)`;
-    blobUp.style.backgroundImage = `url(../svg/blob${random2}.svg)`;
-    blobDown.style.backgroundImage = `url(../svg/blob${random3}.svg)`;
+    blobGran.style.backgroundImage = `url(./svg/blob${random1}.svg)`;
+    blobUp.style.backgroundImage = `url(./svg/blob${random2}.svg)`;
+    blobDown.style.backgroundImage = `url(./svg/blob${random3}.svg)`;
 };
 // Cridem funció per obtenir formes aleatories dels blobs
 getBlobs();

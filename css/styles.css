@@ -19,7 +19,7 @@ main {
   align-items: center;
   justify-content: center;
   background-color: #ffffff;
-  background-image: url(../svg/blob1.svg);
+  background-image: url(./svg/blob1.svg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
@@ -28,7 +28,7 @@ main {
   width: 150px;
   height: 150px;
   position: absolute;
-  background-image: url(../svg/blob2.svg);
+  background-image: url(./svg/blob2.svg);
   top: 8%;
   right: 8%;
 }
@@ -36,7 +36,7 @@ main {
   width: 150px;
   height: 150px;
   position: absolute;
-  background-image: url(../svg/blob3.svg);
+  background-image: url(./svg/blob3.svg);
   bottom: 8%;
   left: 8%;
 }
